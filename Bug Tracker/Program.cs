@@ -1,3 +1,5 @@
+using Bug_Tracker.BackroundServices;
+using Bug_Tracker.Controllers;
 using Bug_Tracker.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +12,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection")));
 
 var app = builder.Build();
+
+builder.Services.AddScoped<IBugRepositorycs, BugRepository>(); 
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -29,5 +34,9 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapControllerRoute(
+    name: "bug",
+    pattern: "{controller = Bugs}/{action=Index}/{id}");
 
 app.Run();
