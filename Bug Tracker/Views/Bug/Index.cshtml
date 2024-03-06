@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Bug_Tracker.Models.Bug>
+
+<h2>Список багов</h2>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Идентификатор</th>
+                <th>Название</th>
+                <th>Описание</th>
+                <th>Статус</th>
+                <th>Приоритет</th>
+                <th>Дата создания</th>
+                <th>Дата обновления</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var bug in Model)
+            {
+                <tr>
+                    <td>@bug.BugId</td>
+                    <td>@bug.Title</td>
+                    <td>@bug.BugStatus</td>
+                    <td>@bug.Priority</td>
+                    <td>@bug.CreatedByUserId.ToString("yyyy-MM-dd")</td>
+                    <td>@bug.UpdateAt.ToString("yyyy-MM-dd")</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@bug.BugId">Подробнее</a> |
+                        <a asp-action="Edit" asp-route-id="@bug.BugId">Редактировать</a> |
+                        <a asp-action="Delete" asp-route-id="@bug.BugId">Удалить</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Нет доступных багов.</p>
+}
+
+<a asp-action="Create">Добавить новый баг</a>

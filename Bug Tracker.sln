@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bug Tracker", "Bug Tracker\Bug Tracker.csproj", "{1CD93E51-EA1E-459D-B03E-6AB147DA3FE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BugTracker", "Bug Tracker\BugTracker.csproj", "{1CD93E51-EA1E-459D-B03E-6AB147DA3FE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

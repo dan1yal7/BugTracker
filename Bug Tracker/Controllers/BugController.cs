@@ -3,7 +3,7 @@ using Bug_Tracker.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bug_Tracker.Controllers
-{
+{ 
     public class BugController : Controller
     {
         private readonly IBugRepositorycs _bugrepository; 
@@ -96,4 +96,4 @@ namespace Bug_Tracker.Controllers
         }
     }
 }
- 
+  

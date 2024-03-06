@@ -10,10 +10,11 @@ builder.Services.AddControllersWithViews();
 
 //DI 
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection")));
+builder.Services.AddScoped<IBugRepositorycs, BugRepository>();
 
 var app = builder.Build();
 
-builder.Services.AddScoped<IBugRepositorycs, BugRepository>(); 
+
 
 
 // Configure the HTTP request pipeline.
@@ -37,6 +38,6 @@ app.MapControllerRoute(
 
 app.MapControllerRoute(
     name: "bug",
-    pattern: "{controller = Bugs}/{action=Index}/{id}");
+    pattern: "{controller = Bug}/{action=Index}/{id}");
 
 app.Run();
