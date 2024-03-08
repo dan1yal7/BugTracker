@@ -40,4 +40,8 @@ app.MapControllerRoute(
     name: "bug",
     pattern: "{controller = Bug}/{action=Index}/{id}");
 
+app.MapControllerRoute(
+    name: "user",
+    pattern: "{controller = User}/{action=Index}/{id}");
+
 app.Run();
