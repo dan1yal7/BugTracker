@@ -10,7 +10,8 @@ builder.Services.AddControllersWithViews();
 
 //DI 
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection")));
-builder.Services.AddScoped<IBugRepositorycs, BugRepository>();
+builder.Services.AddScoped<IBugRepositorycs, BugRepository>(); 
+builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 
 var app = builder.Build();
 
@@ -43,5 +44,9 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "user",
     pattern: "{controller = User}/{action=Index}/{id}");
+
+app.MapControllerRoute(
+    name: "comment",
+    pattern: "{controller = Comment}/{action=Index}/{id}");
 
 app.Run();
