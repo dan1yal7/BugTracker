@@ -19,10 +19,10 @@ namespace Bug_Tracker.BackroundServices
         private readonly ApplicationDbContext _context;
         private readonly DbSet<Comment> _dbSet; 
 
-        public CommentRepository(ApplicationDbContext context, DbSet<Comment> dbSet)
+        public CommentRepository(ApplicationDbContext context)
         {
             _context = context;
-            _dbSet = dbSet;
+            _dbSet = _context.Set<Comment>();
         }
 
         public void Add(Comment comment)

@@ -9,3 +9,4 @@
         public int BugId { get; set; }
     }
 }
+    

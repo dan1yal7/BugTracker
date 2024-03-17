@@ -10,7 +10,7 @@ builder.Services.AddControllersWithViews();
 
 //DI 
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection")));
-builder.Services.AddScoped<IBugRepositorycs, BugRepository>(); 
+builder.Services.AddScoped<IBugRepositorycs, BugRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 
 var app = builder.Build();
