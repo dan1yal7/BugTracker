@@ -23,7 +23,7 @@ namespace Bug_Tracker.Models
         Low,
         Medium,
         High,
-        Critical 
+        Critical    
     } 
 
     public enum BugStatus

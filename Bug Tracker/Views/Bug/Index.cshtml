@@ -9,8 +9,8 @@
             <tr>
                 <th>Идентификатор</th>
                 <th>Название</th>
-                <th>Статус</th>
                 <th>Приоритет</th>
+                <th>Статус</th>
                 <th>Дата создания</th>
                 <th>Дата обновления</th>
             </tr>
@@ -22,9 +22,11 @@
                     <td>@bug.BugId</td>
                     <td>@bug.Title</td>
                     <td>@bug.BugStatus</td>
-                    <td>@bug.Priority</td>
-                    <td>@bug.CreatedByUserId.ToString("yyyy-MM-dd")</td>
-                    <td>@bug.UpdateAt.ToString("yyyy-MM-dd")</td>
+                    <td>@bug.Priority</td> 
+                    <td>@bug.Date</td>
+                    <td>@bug.UpdateAt</td>
+                   @*  <td>@bug.CreatedByUserId.ToString("yyyy-MM-dd")</td>
+                    <td>@bug.UpdateAt.ToString("yyyy-MM-dd")</td> *@
                     <td>
                         <a asp-action="Details" asp-route-id="@bug.BugId">Подробнее</a> |
                         <a asp-action="Edit" asp-route-id="@bug.BugId">Редактировать</a> |
