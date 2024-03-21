@@ -35,3 +35,7 @@ namespace Bug_Tracker.Models
         Closed
     }
 }
+
+/// Написать полное представление для BugController и его методов edit details delete и тд 
+/// После приступить к UserController и его методам   
+/// Разобраться с Bootstrap CSS HTML 

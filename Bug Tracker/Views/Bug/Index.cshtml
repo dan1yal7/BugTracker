@@ -28,9 +28,13 @@
                    @*  <td>@bug.CreatedByUserId.ToString("yyyy-MM-dd")</td>
                     <td>@bug.UpdateAt.ToString("yyyy-MM-dd")</td> *@
                     <td>
-                        <a asp-action="Details" asp-route-id="@bug.BugId">Подробнее</a> |
-                        <a asp-action="Edit" asp-route-id="@bug.BugId">Редактировать</a> |
-                        <a asp-action="Delete" asp-route-id="@bug.BugId">Удалить</a>
+                   
+                        <form asp-action="Edit" asp-route-id="@bug.BugId">
+                            <button type="submit" class="btn btn-dark">Редактировать</button>
+                             </form>
+                        <form asp-action="Delete" asp-route-id="@bug.BugId">
+                        <button type="submit" class="btn btn-danger">Удалить</button> 
+                            </form>
                     </td>
                 </tr>
             }
@@ -42,4 +46,8 @@ else
     <p>Нет доступных багов.</p>
 }
 
-<a asp-action="Create">Добавить новый баг</a>
+<form asp-action="Create">
+ <button type = "submit" class="btn btn-primary">Добавить баг</button> 
+ </form> 
+
+ 

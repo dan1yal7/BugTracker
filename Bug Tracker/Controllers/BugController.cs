@@ -54,7 +54,7 @@ namespace Bug_Tracker.Controllers
 
         //POST: /Bug/Edit{id} 
 
-        public IActionResult Edit(int id, Bug bug)
+        public IActionResult Change(int id, Bug bug)
         {
             if( id != bug.BugId)
             {
@@ -93,7 +93,8 @@ namespace Bug_Tracker.Controllers
             _bugrepository.Delete(bug);
 
             return RedirectToAction(nameof(Index));
-        }
+        } 
+
     }
 }
   
