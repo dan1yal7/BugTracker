@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Bug_Tracker.Models.Bug>
 
-<h2>Список багов</h2>
+<h3>Список багов</h3>
 
 @if (Model.Any())
 {
@@ -9,8 +9,8 @@
             <tr>
                 <th>Идентификатор</th>
                 <th>Название</th>
-                <th>Приоритет</th>
                 <th>Статус</th>
+                <th>Приоритет</th>
                 <th>Дата создания</th>
                 <th>Дата обновления</th>
             </tr>
@@ -30,10 +30,10 @@
                     <td>
                    
                         <form asp-action="Edit" asp-route-id="@bug.BugId">
-                            <button type="submit" class="btn btn-dark">Редактировать</button>
+                            <button type="submit" class="btn btn-dark btn-sm">Редактировать</button>
                              </form>
                         <form asp-action="Delete" asp-route-id="@bug.BugId">
-                        <button type="submit" class="btn btn-danger">Удалить</button> 
+                        <button type="submit" class="btn btn-danger btn-sm">Удалить</button> 
                             </form>
                     </td>
                 </tr>

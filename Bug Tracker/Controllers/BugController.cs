@@ -63,8 +63,9 @@ namespace Bug_Tracker.Controllers
 
             if(ModelState.IsValid)
             {
-                _bugrepository.Update(bug);
-                return RedirectToAction(nameof(Index));
+                _bugrepository.Update(bug); 
+                return RedirectToAction(nameof(Index)); 
+               
             }
             return View(bug);
         } 
@@ -98,3 +99,5 @@ namespace Bug_Tracker.Controllers
     }
 }
   
+// Исправить ошибку с сохраненим при редактировании бага
+// Создать представления для Create и разобраться с удалением 
