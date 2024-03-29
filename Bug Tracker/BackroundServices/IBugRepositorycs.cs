@@ -12,7 +12,8 @@ namespace Bug_Tracker.BackroundServices
         Bug GetById(int id);    
         IEnumerable<Bug> GetAllBugs();
         void Add(Bug bug);  
-        void Update(Bug bug);   
+        void Update(Bug bug);
+        void SaveChanges();
         void Delete(Bug bug);
     }
     //BugRepository предоставляет реализацию этих методов. Также как видно ниже я внедрил ApplicatonDbContext для доступа к базе данных
@@ -65,8 +66,13 @@ namespace Bug_Tracker.BackroundServices
         /// </summary>
         /// <param name="bug"></param>
         public void Update(Bug bug)
+        { 
+            _context.Entry(bug).State = EntityState.Modified;  
+            _context.SaveChanges(); 
+        }  
+        public void SaveChanges()
         {
-            _context.Entry(bug).State = EntityState.Modified;
+            _context.SaveChanges();
         }
         /// <summary>
         /// В методе Update(Bug bug) вы используете _context.Entry(bug).State = EntityState.Modified; для обозначения того,
@@ -75,10 +81,10 @@ namespace Bug_Tracker.BackroundServices
         /// <param name="bug"></param>
         public void Delete(Bug bug)  
         {
-              _dbSet.Remove(bug);
-        
-        }
+           _dbSet.Remove(bug);
 
+        }
+        
     }
     
 }

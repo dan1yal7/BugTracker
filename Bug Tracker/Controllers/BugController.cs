@@ -34,7 +34,8 @@ namespace Bug_Tracker.Controllers
             if(ModelState .IsValid)
             {
                 _bugrepository.Add(bug);
-                   return RedirectToAction(nameof(Index)); 
+                _bugrepository.SaveChanges();
+                return RedirectToAction(nameof(Index)); 
             } 
             return View(bug);
            
@@ -53,8 +54,9 @@ namespace Bug_Tracker.Controllers
         }
 
         //POST: /Bug/Edit{id} 
-
-        public IActionResult Change(int id, Bug bug)
+        [HttpPost, ActionName("Edit")]
+        [ValidateAntiForgeryToken]
+        public IActionResult EditConfirmed(int id, Bug bug)
         {
             if( id != bug.BugId)
             {
@@ -63,9 +65,10 @@ namespace Bug_Tracker.Controllers
 
             if(ModelState.IsValid)
             {
-                _bugrepository.Update(bug); 
+                _bugrepository.Update(bug);
+                _bugrepository.SaveChanges();
                 return RedirectToAction(nameof(Index)); 
-               
+              
             }
             return View(bug);
         } 
@@ -92,10 +95,11 @@ namespace Bug_Tracker.Controllers
         {
             var bug = _bugrepository.GetById(id);
             _bugrepository.Delete(bug);
+            _bugrepository.SaveChanges();
 
             return RedirectToAction(nameof(Index));
         } 
-
+        
     }
 }
   
