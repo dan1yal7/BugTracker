@@ -61,7 +61,7 @@ namespace Bug_Tracker.Controllers
             //if( id != bug.BugId)
             //{
             //    return NotFound();
-            //}  
+            //}
 
             if(ModelState.IsValid)
             {
