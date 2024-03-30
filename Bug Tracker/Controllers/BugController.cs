@@ -58,10 +58,10 @@ namespace Bug_Tracker.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult EditConfirmed(int id, Bug bug)
         {
-            if( id != bug.BugId)
-            {
-                return NotFound();
-            }
+            //if( id != bug.BugId)
+            //{
+            //    return NotFound();
+            //}  
 
             if(ModelState.IsValid)
             {
