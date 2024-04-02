@@ -15,7 +15,8 @@ namespace Bug_Tracker.Models
         public DateTime Date { get; set; } 
         public DateTime UpdateAt { get; set; }
         public int CreatedByUserId { get; set; }  
-        public int AssignedToUserId { get; set; }
+        public int AssignedToUserId { get; set; } 
+        public string Description { get; set; }
 
     } 
     public enum BugPriority
