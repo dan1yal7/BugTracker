@@ -1,0 +1,44 @@
+﻿@model Bug_Tracker.Models.Bug 
+
+<h3>Добавить баг</h3> 
+
+<form  asp-action = "Create">  
+
+    <div class =" form-group"> 
+        <label asp-for="Title" class="control-label">Название</label> 
+        <input asp-for="Title" class="form-control" />  
+        <span asp-validation-for="Title" class="text-primary-emphasis"></span>
+    </div>
+
+    <div class="form-group"> 
+        <label asp-for="BugStatus" class="control-label">Статус</label>
+        <select asp-for="BugStatus" class="form-control" />
+        <option value="Open">Открытый</option>  
+        <option value="InProgress">В процессе</option> 
+        <option value="Resolved">Исправленный</option>
+        <option value="Closed">Закрытый</option> 
+        </select> 
+        <span asp-validation-for="BugStatus" class="text-primary-emphasis"></span>
+
+    </div> 
+
+    <div class="form-group"
+      <label asp-for="Priority" class="control-label">Приоритет</label> 
+      <select asp-for="Priority" class ="form-control" /> 
+      <option value ="Low">Низкий</option> 
+      <option value = "Medium">Cредний</option> 
+      <option value = "High">Высокий</option> 
+      <option value =" Critical">Cрочно</option>
+      </select> 
+    
+      <span asp-validation-for="Priority" class="text-primary-emphasis"></span> 
+
+     </div> 
+
+
+     
+
+
+
+
+</form>
