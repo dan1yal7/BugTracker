@@ -58,12 +58,13 @@ namespace Bug_Tracker.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult EditConfirmed(int id, Bug bug)
         {
-            //if( id != bug.BugId)
+            //if (id != bug.BugId)
             //{
             //    return NotFound();
             //}
 
-            if(ModelState.IsValid)
+
+            if (ModelState.IsValid)
             {
                 _bugrepository.Update(bug);
                 _bugrepository.SaveChanges();
@@ -103,4 +104,6 @@ namespace Bug_Tracker.Controllers
     }
 }
   
-  
+  //Исправить баг с сохранением 
+  //подправить поле описание в методе добавления бага на самом сайте, сделать шире, то есть,чтобы можно было отпустить вниз строку
+  // Разобраться, что происходит с датами создания и обновления.
