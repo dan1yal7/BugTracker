@@ -56,22 +56,23 @@ namespace Bug_Tracker.Controllers
         //POST: /Bug/Edit{id} 
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public IActionResult EditConfirmed(int id, Bug bug)
+        public IActionResult EditConfirmed(int id, Bug bag)
         {
-            //if (id != bug.BugId)
-            //{
-            //    return NotFound();
-            //}
+            if (id != bag.BugId)
+            {
+                return NotFound();
+            }
 
 
             if (ModelState.IsValid)
             {
+                var bug = _bugrepository.GetById(id);
                 _bugrepository.Update(bug);
                 _bugrepository.SaveChanges();
-                return RedirectToAction(nameof(Index)); 
+                return RedirectToAction(nameof(Index));
               
             }
-            return View(bug);
+               return View(bag);
         } 
 
         

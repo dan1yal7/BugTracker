@@ -8,7 +8,7 @@ namespace Bug_Tracker.Models
         [Key] 
         public int BugId { get; set; }
 
-        [Column(TypeName = "nvarchar(50)")]
+        //[Column(TypeName = "nvarchar(50)")]
         public string Title { get; set; } 
         public BugPriority Priority { get; set; } 
         public BugStatus BugStatus { get; set; } 
