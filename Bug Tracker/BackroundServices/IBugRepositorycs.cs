@@ -68,7 +68,7 @@ namespace Bug_Tracker.BackroundServices
         public void Update(Bug bug)
         { 
             _context.Entry(bug).State = EntityState.Modified;  
-            _context.SaveChanges(); 
+            //_context.SaveChanges(); 
         }  
         public void SaveChanges()
         {

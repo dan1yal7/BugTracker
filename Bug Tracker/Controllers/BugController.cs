@@ -58,12 +58,7 @@ namespace Bug_Tracker.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult EditConfirmed(int id, Bug bag)
         {
-            if (id != bag.BugId)
-            {
-                return NotFound();
-            }
-
-
+          
             if (ModelState.IsValid)
             {
                 var bug = _bugrepository.GetById(id);
