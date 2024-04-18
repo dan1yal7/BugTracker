@@ -54,7 +54,7 @@ namespace Bug_Tracker.Controllers
         }
 
         //POST: /Bug/Edit{id} 
-        [HttpPost, ActionName("Edit")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult EditConfirmed(int id, Bug bag)
         {
