@@ -1,6 +1,7 @@
 ﻿using Bug_Tracker.BackroundServices;
 using Bug_Tracker.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Bug_Tracker.Controllers
 { 
@@ -56,18 +57,37 @@ namespace Bug_Tracker.Controllers
         //POST: /Bug/Edit{id} 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult EditConfirmed(int id, Bug bag)
+        public IActionResult EditConfirmed(int id, Bug bug)
         {
           
             if (ModelState.IsValid)
             {
-                var bug = _bugrepository.GetById(id);
+               
+                var bg = _bugrepository.GetById(id);
                 _bugrepository.Update(bug);
                 _bugrepository.SaveChanges();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index)); 
+
               
+            } 
+
+            foreach(var item in ModelState)
+            {
+                if(item.Value.ValidationState == ModelValidationState.Invalid)
+                {
+                    string errorMessages = " "; 
+
+                    errorMessages = $"{errorMessages}\nОшибки для свойства {item.Key}:\n";
+                   
+                    foreach (var error in item.Value.Errors)
+                    {
+                        errorMessages = $"{errorMessages}{error.ErrorMessage}\n";
+                    }
+
+                    return View(errorMessages);
+                }
             }
-               return View(bag);
+               return View(bug);
         } 
 
         
@@ -100,6 +120,6 @@ namespace Bug_Tracker.Controllers
     }
 }
   
-  //Исправить баг с сохранением 
+  //Исправить баг с сохранением - closed
   //подправить поле описание в методе добавления бага на самом сайте, сделать шире, то есть,чтобы можно было отпустить вниз строку
   // Разобраться, что происходит с датами создания и обновления.
