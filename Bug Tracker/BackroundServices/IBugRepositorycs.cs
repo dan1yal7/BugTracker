@@ -54,7 +54,8 @@ namespace Bug_Tracker.BackroundServices
         /// </summary>
         /// <param name="bug"></param>
         public void Add(Bug bug) 
-        { 
+        {  
+            bug.Date = DateTime.Now; 
             _dbSet.Add(bug);
         
         }
@@ -66,7 +67,8 @@ namespace Bug_Tracker.BackroundServices
         /// </summary>
         /// <param name="bug"></param>
         public void Update(Bug bug)
-        { 
+        {  
+            bug.UpdateAt = DateTime.Now;
             _context.Entry(bug).State = EntityState.Modified;  
             //_context.SaveChanges(); 
         }  
