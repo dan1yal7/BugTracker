@@ -1,11 +1,44 @@
+﻿using Bug_Tracker.Authclass;
 using Bug_Tracker.BackroundServices;
 using Bug_Tracker.Controllers;
 using Bug_Tracker.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.IdentityModel.Tokens; 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+//Add services to the container. 
+
+ builder.Services.AddAuthorization();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+   .AddJwtBearer(options =>
+   {
+       options.TokenValidationParameters = new TokenValidationParameters
+       {
+           // Указывает будет ли валидироваться издатель при валидации токена 
+           ValidateIssuer = true,
+
+           // строка представляющая потребителя 
+           ValidIssuer = AuthOptions.ISSUER,
+
+           // указывать будет ли валидироваться потребитель  
+           ValidateAudience = true,
+
+           // Установка потребителя токена 
+           ValidAudience = AuthOptions.AUDIENCE,
+
+           //Будет ли валидироваться время существования 
+           ValidateLifetime = true,
+
+           // установка ключа безопасности
+           IssuerSigningKey = AuthOptions.GetSymmetricSecurityKey(),
+
+           //валидация ключа безопасности
+           ValidateIssuerSigningKey = true,
+       };
+   });
+
 builder.Services.AddControllersWithViews();
 
 //DI 
@@ -31,6 +64,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
