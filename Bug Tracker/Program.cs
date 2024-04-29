@@ -22,7 +22,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
            // строка представляющая потребителя 
            ValidIssuer = AuthOptions.ISSUER,
 
-           // указывать будет ли валидироваться потребитель  
+           // указывает будет ли валидироваться потребитель  
            ValidateAudience = true,
 
            // Установка потребителя токена 

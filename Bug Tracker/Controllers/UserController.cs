@@ -66,7 +66,24 @@ namespace Bug_Tracker.Controllers
 
             }
         }
-    
-        
+        [HttpPost("Authenticate")]
+        public IActionResult Authenticate([FromBody] UserCredentials credentials)
+        {
+            var user = _context.Users.FirstOrDefault( u => u.Email == credentials.Email && u.HashedPassword == credentials.Password); 
+            if(user == null)
+            {
+                return Unauthorized(); 
+            }
+            var token = GenerateJwtToken(user);
+
+                return Ok(new {Token = token});  
+            
+        } 
+         
+        public string GenerateJwtToken(User user)
+        {
+            /// 
+         
+        }
     }
 }

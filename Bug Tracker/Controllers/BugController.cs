@@ -1,10 +1,12 @@
 ﻿using Bug_Tracker.BackroundServices;
 using Bug_Tracker.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Bug_Tracker.Controllers
-{ 
+{
+    
     public class BugController : Controller
     {
         private readonly IBugRepositorycs _bugrepository; 
@@ -25,9 +27,10 @@ namespace Bug_Tracker.Controllers
         public IActionResult Create()
         {
             return View();
-        } 
+        }
 
-        //POST: /BUG/Edit/{id}
+        //POST: /BUG/Edit/{id} 
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken] 
         public IActionResult Create(Bug bug)
